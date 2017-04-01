@@ -1,0 +1,167 @@
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.8ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.9ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('0')
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.7ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('0')
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateEmployees (20170401185459)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateEmployees (20170401185459)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateEmployees (20170401185459)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (4.8ms)[0m  [1mCREATE TABLE "employees" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "birthday" character varying, "skills" text[] DEFAULT '{}', "address" character varying, "city" character varying, "state" character varying, "zip" character varying, "company_environment" text[] DEFAULT '{}', "job_characteristics" text[] DEFAULT '{}', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20170401185459"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Migrating to CreateIndustries (20170401185914)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "industries" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20170401185914"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateEmployers (20170401190154)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "employers" ("id" serial primary key, "name" character varying, "about" text, "yearly_revenue" character varying, "employee_count" integer, "address" character varying, "city" character varying, "state" character varying, "zip" character varying, "company_environment" text[] DEFAULT '{}', "job_characteristics" text[] DEFAULT '{}', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20170401190154"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePostings (20170401190200)
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "postings" ("id" serial primary key, "title" character varying, "description" character varying, "qualifications" text[] DEFAULT '{}', "responsibilities" text[] DEFAULT '{}', "job_type" character varying, "required_education" character varying, "required_experience" character varying, "job_characteristics" character varying, "industry_id" integer, "employer_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE  INDEX  "index_postings_on_industry_id" ON "postings"  ("industry_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_postings_on_employer_id" ON "postings"  ("employer_id")[0m
+  [1m[35m (1.1ms)[0m  ALTER TABLE "postings" ADD CONSTRAINT "fk_rails_5348a068c4"
+FOREIGN KEY ("industry_id")
+  REFERENCES "industries" ("id")
+
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "postings" ADD CONSTRAINT "fk_rails_30f4d41091"
+FOREIGN KEY ("employer_id")
+  REFERENCES "employers" ("id")
+[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20170401190200"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateQuestions (20170401190441)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "questions" ("id" serial primary key, "industry_id" integer, "question" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  CREATE  INDEX  "index_questions_on_industry_id" ON "questions"  ("industry_id")
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "questions" ADD CONSTRAINT "fk_rails_abb708fe2b"
+FOREIGN KEY ("industry_id")
+  REFERENCES "industries" ("id")
+[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20170401190441"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAnswers (20170401191052)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "answers" ("id" serial primary key, "question_id" integer, "answer" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_answers_on_question_id" ON "answers"  ("question_id")
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "answers" ADD CONSTRAINT "fk_rails_3d5ed4418f"
+FOREIGN KEY ("question_id")
+  REFERENCES "questions" ("id")
+[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20170401191052"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateEmployeeResponses (20170401191251)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (4.0ms)[0m  [1mCREATE TABLE "employee_responses" ("id" serial primary key, "employee_id" integer, "question_id" integer, "answer" text, "correct" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (2.0ms)[0m  CREATE  INDEX  "index_employee_responses_on_employee_id" ON "employee_responses"  ("employee_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_employee_responses_on_question_id" ON "employee_responses"  ("question_id")[0m
+  [1m[35m (0.8ms)[0m  ALTER TABLE "employee_responses" ADD CONSTRAINT "fk_rails_473357b227"
+FOREIGN KEY ("employee_id")
+  REFERENCES "employees" ("id")
+
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "employee_responses" ADD CONSTRAINT "fk_rails_014dd2d250"
+FOREIGN KEY ("question_id")
+  REFERENCES "questions" ("id")
+[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20170401191251"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'answers'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.3ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'employee_responses'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'employees'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.9ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'employers'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.9ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'industries'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.6ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'postings'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'questions'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
