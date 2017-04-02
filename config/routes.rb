@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   root 'pages#index'
-  get '/tasks' => 'tasks#index'
+  get 'recruiter/home' => 'pages#home'
+  get 'recruiter/dashboard' => 'pages#dashboard'
 
-  post '/tasks' => 'tasks#create'
 
-  patch '/tasks/:id' => 'tasks#update'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

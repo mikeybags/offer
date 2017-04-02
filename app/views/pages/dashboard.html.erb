@@ -1,0 +1,206 @@
+<nav id="main-nav" class="navbar navbar-fixed-top">
+  <div class="container-fluid">
+    <a class="brand-logo" href="/"><img id="logo" src="/images/logo4.png" alt="Spark"></a>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Hello, Apple Inc.
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Something</a></li>
+            <li><a href="#">Other stuff</a></li>
+          </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+  <div class="top-padding">
+  <div class="col-xs-2" style="height: 544px; background-color: #ffffff;">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title"></h3>
+        </div>
+        <div class="panel-body">
+          Panel content
+          Panel content
+          Panel content
+        </div>
+      </div>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Panel info</h3>
+        </div>
+        <div class="panel-body">
+          Panel content
+          Panel content
+          Panel content
+          Panel content
+        </div>
+      </div>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Panel info</h3>
+        </div>
+        <div class="panel-body">
+          Panel content
+          Panel content
+          Panel content
+          Panel content
+        </div>
+      </div>
+  </nav>
+  </div>
+  <div id="tabs" class="col-xs-10">
+  <ul>
+    <li><a href="#tabs-1">Value Creation</a></li>
+    <li><a href="#tabs-2">More Industry</a></li>
+    <li><a href="#tabs-3">Aenean lacinia</a></li>
+    <li><a href="#tabs-4">Aenean lacinia</a></li>
+    <li><a href="#tabs-5">Aenean lacinia</a></li>
+  </ul>
+  <div id="tabs-1" style="height: 500px;">
+    <img style="height: 360px; width: 820px;" src="/images/OFFERTable.jpg">
+  </div>
+  <div id="tabs-2">
+    <div id="chart_div2"></div>
+  </div>
+  <div id="tabs-3">
+      <div id="chart_div"></div>
+  </div>
+  <div id="tabs-4">
+      <div id="chart_div1"></div>
+  </div>
+  <div id="tabs-5">
+    <div id="piechart_3d"></div>
+  </div>
+</div>
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart1);
+  function drawChart1() {
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Engineering',     11],
+      ['Sales',      2],
+      ['Finance',  2],
+      ['Marketing', 2],
+      ['Management',    7]
+    ]);
+    var options = {
+      title: 'Percentage of Positions by Industry ',
+      'width': 820,
+      'height': 472,
+      is3D: true,
+      backgroundColor: '#ffffff'
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+    chart.draw(data, options);
+  }
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBasic);
+function drawBasic() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('timeofday', 'Time of Day');
+      data.addColumn('number', 'Motivation Level');
+      data.addRows([
+        [{v: [8, 0, 0], f: '8'}, 1],
+        [{v: [9, 0, 0], f: '9'}, 2],
+        [{v: [10, 0, 0], f:'10'}, 3],
+        [{v: [11, 0, 0], f: '11'}, 6],
+        [{v: [12, 0, 0], f: '12'}, 9],
+        [{v: [13, 0, 0], f: '1'}, 7],
+        [{v: [14, 0, 0], f: '2'}, 6],
+        [{v: [15, 0, 0], f: '3'}, 5],
+        [{v: [16, 0, 0], f: '4'}, 4],
+        [{v: [17, 0, 0], f: '5'}, 3],
+      ]);
+      var options = {
+        title: 'Average Test Score by Industry ',
+        'width': 820,
+        'height': 472,
+        hAxis: {
+          title: 'Score'
+        },
+        vAxis: {title: 'Number of Applicants'},
+        backgroundColor: '#ffffff'
+      };
+      var chart = new google.visualization.ColumnChart(
+        document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Cultural Fit', 'Quantity of Applicants'],
+      [ 8,      12],
+      [ 4,      5.5],
+      [ 11,     14],
+      [ 4,      5],
+      [ 3,      3.5],
+      [ 5,      5.5],
+      [ 11,     7],
+      [ 4,      9],
+      [ 6,      9.5],
+      [ 11,     15],
+      [ 7,      10],
+      [ 4,      8],
+      [ 3,      12],
+      [9,     9],
+      [ 4,      8],
+      [ 2,      7],
+      [ 6.5,    8]
+    ]);
+    var options = {
+      title: 'All scores in Software Sector',
+      'width': 820,
+      'height': 472,
+      hAxis: {title: 'Years of Experience', minValue: 0, maxValue: 10},
+      vAxis: {title: 'Test Score (by %)', minValue: 0, maxValue: 10},
+      backgroundColor: '#ffffff',
+      legend: 'none'
+    };
+    var chart = new google.visualization.ScatterChart(document.getElementById('chart_div1'));
+    chart.draw(data, options);
+  }
+  google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart2);
+function drawChart2() {
+var data = google.visualization.arrayToDataTable([
+['Q1', 0, 0, 23, 23],
+['Q2', 23, 23, 46, 46],
+['Q3', 46, 46, 76, 76],
+['Q4', 76, 76, 95, 95],
+['Annual', 95, 95, 0, 0]
+// Treat the first row as data.
+], true);
+var options = {
+title: 'Value Creation',
+'width': 820,
+'height': 472,
+vAxis: {title: 'Dollar(by 1000\'s)', minValue: 0, maxValue: 10},
+legend: 'none',
+bar: { groupWidth: '100%' }, // Remove space between bars.
+candlestick: {
+  fallingColor: { strokeWidth: 0, fill: '#CCCCCC' },
+  risingColor: { strokeWidth: 0, fill: '#0f9d58' }   // green
+},
+backgroundColor: '#ffffff'
+};
+var chart = new google.visualization.CandlestickChart(document.getElementById('chart_div2'));
+chart.draw(data, options);
+}
+    </script>
+    <script>
+$( function() {
+$( "#tabs" ).tabs();
+} );
+</script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
