@@ -1,3 +1,106 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+  h1, h2, h3, h4, h5, h6, legend {
+    font-family: 'Roboto Slab', serif;
+  }
+
+  p, input, option, li, ul {
+    font-family: 'Lato', sans-serif;
+  }
+
+#myCarousel {
+  margin-top: 50px;
+}
+
+#myCarousel > div > div > img {
+  width: 100%;
+}
+
+.transparent-bg {
+  background-color: rgba(0,0,0,0.75);
+  padding: 5px;
+  margin-bottom: 30px;
+  width: 55%;
+  left: 22.5%;
+  right: 22.5%;
+  border-radius: 15px;
+  h3 {
+    margin-top: 5px;
+  }
+}
+
+.item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 405px;
+}
+
+.carousel .item {
+  height: 405px;
+}
+
+.item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 415px;
+}
+
+.jumbo-wrapper {
+  background-color: rgba(0,0,0,0.75);
+  color: #FFFFFF;
+  height: 100%;
+  padding-top: 10px;
+}
+
+
+.home-btns {
+  width: 50%;
+  margin: 20px -1px;
+  display: inline-block;
+
+  .btn {
+    background-color: #4C87EC;
+  }
+}
+
+#main-nav {
+  background-color: #4C87EC;
+  color: #000000;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  margin-right: 0;
+  box-shadow: 0px 3px 5px #333333;
+}
+
+.navbar-brand {
+  padding: 0px;
+}
+
+.navbar-brand>img {
+  width: auto;
+  width: 8%;
+  height: 95%;
+  margin-top: 1px;
+  position: absolute;
+  margin-left: 46%;
+}
+
+body {
+  background-color: #D9D9D9;
+}
+
+.container {
+  height: 800px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.btn {
+  box-shadow: 3px 3px 5px #000000;
+  border-radius: 5px;
+}

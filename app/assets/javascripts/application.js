@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require npm-dependencies
+//= require turbolinks
 //= require main
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require_tree .

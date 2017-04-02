@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'pages#index'
-
   get '/tasks' => 'tasks#index'
 
   post '/tasks' => 'tasks#create'

@@ -1,1 +1,0 @@
-# Sprint with  Angular + Rails
