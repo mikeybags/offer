@@ -1,3 +1,8 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <nav id="main-nav" class="navbar navbar-fixed-top">
   <div class="container-fluid">
     <a class="brand-logo" href="/"><img id="logo" src="/images/logo4.png" alt="Spark"></a>
@@ -16,47 +21,47 @@
   <div class="top-padding">
   <div class="col-xs-2" style="height: 544px; background-color: #ffffff;">
     <nav class="navbar navbar-default" role="navigation">
-      <div class="panel panel-danger">
+      <div class="panel panel-info">
         <div class="panel-heading">
-          <h3 class="panel-title"></h3>
+          <h3 class="panel-title">Find Recruits</h3>
         </div>
         <div class="panel-body">
-          Panel content
-          Panel content
-          Panel content
+          <a style="display: block;" href="#">Accounting</a>
+          <a style="display: block;" href="#">Finance</a>
+          <a style="display: block;" href="#">Engineering</a>
+          <a style="display: block;" href="#">Human Resources</a>
+          <a style="display: block;" href="#">Sales</a>
         </div>
       </div>
       <div class="panel panel-info">
         <div class="panel-heading">
-          <h3 class="panel-title">Panel info</h3>
+          <h3 class="panel-title">Current Recruits</h3>
         </div>
         <div class="panel-body">
-          Panel content
-          Panel content
-          Panel content
-          Panel content
+          <a style="display: block;" href="#">Accounting</a>
+          <a style="display: block;" href="#">Finance</a>
+          <a style="display: block;" href="#">Engineering</a>
+          <a style="display: block;" href="#">Human Resources</a>
+          <a style="display: block;" href="#">Sales</a>
         </div>
       </div>
       <div class="panel panel-info">
         <div class="panel-heading">
-          <h3 class="panel-title">Panel info</h3>
+          <h3 class="panel-title">Settings</h3>
         </div>
         <div class="panel-body">
-          Panel content
-          Panel content
-          Panel content
-          Panel content
+          <a href="/recruiter/home">Update Settings</a>
         </div>
       </div>
   </nav>
   </div>
   <div id="tabs" class="col-xs-10">
   <ul>
-    <li><a href="#tabs-1">Value Creation</a></li>
-    <li><a href="#tabs-2">More Industry</a></li>
-    <li><a href="#tabs-3">Aenean lacinia</a></li>
-    <li><a href="#tabs-4">Aenean lacinia</a></li>
-    <li><a href="#tabs-5">Aenean lacinia</a></li>
+    <li><a href="#tabs-1">Dashboard</a></li>
+    <li><a href="#tabs-2">Value Creation</a></li>
+    <li><a href="#tabs-3">Average Test Score</a></li>
+    <li><a href="#tabs-4">Scatter Plot</a></li>
+    <li><a href="#tabs-5">Percentage by Field</a></li>
   </ul>
   <div id="tabs-1" style="height: 500px;">
     <img style="height: 360px; width: 820px;" src="/images/OFFERTable.jpg">
@@ -104,7 +109,7 @@ google.charts.setOnLoadCallback(drawBasic);
 function drawBasic() {
       var data = new google.visualization.DataTable();
       data.addColumn('timeofday', 'Time of Day');
-      data.addColumn('number', 'Motivation Level');
+      data.addColumn('number', 'Applicant Pool');
       data.addRows([
         [{v: [8, 0, 0], f: '8'}, 1],
         [{v: [9, 0, 0], f: '9'}, 2],
@@ -199,8 +204,3 @@ $( function() {
 $( "#tabs" ).tabs();
 } );
 </script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
